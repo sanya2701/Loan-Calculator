@@ -2,8 +2,19 @@ let loan=document.getElementById("calc");
 let crd=document.getElementById("main1");
 let reset=document.getElementById("reset");
 let newDiv = document.createElement('div');
-loan.addEventListener('click',Loan);
+let loader = document.getElementById('loading');
+//loan.addEventListener('click',giphy);+
+//loan.addEventListener('click',Loan);
 reset.addEventListener('click',rest);
+
+loan.addEventListener('click',function(e){
+  loader.style.display='block';
+  console.log(loader);
+  setTimeout(Loan, 2000);
+
+  e.preventDefault();
+})
+
 
 function Loan(e){
   let p = document.getElementById("inpt").value;
@@ -15,6 +26,7 @@ function Loan(e){
       let newDiv = document.createElement('div');
       newDiv.className="container card text-center";
       newDiv.appendChild(document.createTextNode(`Check your Numerical values.`));
+      loader.style.display='none';
       crd.appendChild(newDiv);
       `break;`
     }
@@ -34,12 +46,24 @@ function Loan(e){
 
 
     newDiv.className="container card text-left";
-    newDiv.appendChild(document.createTextNode(`Monthly Payment: ${mp}                                                    Interest: ${ti}                                                                                                Total Payment: ${tp}`));
+    newDiv.appendChild(document.createTextNode(`Monthly Payment: ${mp}                                                   
+    Interest: ${ti}                                                                                                          Total Payment: ${tp}`));
+    loader.style.display='none';
     crd.appendChild(newDiv);
+    
+
   }
-  e.preventDefault();
+  
 }
 
 function rest(e){
    newDiv.innerHTML="";
 }
+
+// function giphy(e){
+//   let docs = document.getElementById("img");
+//   docs.setAttribute("src", "giphy.gif");
+//   crd.appendChild(docs);
+
+//   e.preventDefault();
+// }
